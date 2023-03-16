@@ -1,0 +1,16 @@
+.cartDetailbtn {
+    background-color: #ffd929;
+    /* width: 90%; */
+    padding: 0 30px;
+    border: none;
+    border-radius: 10px;
+}
+
+.detailImg{
+    border-radius: 10px;
+}
+
+button.backbtn {
+    border: none;
+    background-color: unset;
+}

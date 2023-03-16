@@ -1,0 +1,70 @@
+.header-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rightContent {
+    display: flex;
+    gap: 25px;
+}
+
+.row.mainHeader {
+    display: flex;
+    justify-content: center;
+    padding: 25px 0;
+    background-color: #ffd929;
+}
+    .headerlogo {
+        font-size: 30px;
+        font-weight: bold;
+        font-style: oblique;
+    }
+
+    .loginText {
+        /* font-size: 20px; */
+        font-weight: 500;
+        border: 1px solid;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        cursor: pointer;
+    }
+
+    .signupText {
+        font-weight: 500;
+        border: 1px solid;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        background-color: black;
+        color: aliceblue;
+        cursor: pointer;
+    }
+
+    .addtocart {
+        font-size: 30px;
+    }
+
+    .cartValues {
+        display: flex;
+        justify-content: center;
+        flex-direction: initial;
+    }
+
+    span.myCart {
+        margin-right: -26px;
+        height: 24px;
+        width: 22px;
+        background-color: darkgreen;
+        color: white;
+        border-radius: 16px;
+        padding: 0 7px;
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+
+
