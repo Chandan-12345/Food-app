@@ -3,7 +3,7 @@
         {
             "id" : 1,
             "name" : "Iced Lychee Green Tea",
-            "price" : 39,
+            "price" : 99,
             "btn" : "Add To Cart",
             "image" : "/food1.jpg",
             "type" : "drinks",
@@ -21,7 +21,7 @@
         {
             "id" : 3,
             "name" : "Spaghetti Bolognese",
-            "price" : 39,
+            "price" : 199,
             "btn" : "Add To Cart",
             "image" : "/food3.jpg",
             "type":"Western",
@@ -30,7 +30,7 @@
         {
             "id" : 4,
             "name" : "Sweet & Sour Chicken",
-            "price" : 39,
+            "price" : 299,
             "btn" : "Add To Cart",
             "image" : "/food4.jpg",
             "type" : "chinese",
@@ -39,7 +39,7 @@
         {
             "id" : 5,
             "name" : "Iced Lychee Green Tea",
-            "price" : 39,
+            "price" : 254,
             "btn" : "Add To Cart",
             "image" : "/food5.jpg",
             "type" : "drinks",
@@ -57,7 +57,7 @@
         {
             "id" : 7,
             "name" : "Spaghetti Bolognese",
-            "price" : 39,
+            "price" : 99,
             "btn" : "Add To Cart",
             "image" : "/food7.jpg",
             "type" : "Western",
@@ -66,7 +66,7 @@
         {
             "id" : 8,
             "name" : "Sweet & Sour Chicken",
-            "price" : 39,
+            "price" : 159,
             "btn" : "Add To Cart",
             "image" : "/food8.jpg",
             "type" : "chinese",
@@ -76,7 +76,7 @@
         {
             "id" : 9,
             "name" : "Iced Lychee Green Tea",
-            "price" : 39,
+            "price" : 259,
             "btn" : "Add To Cart",
             "image" : "/food9.jpg",
             "type" : "drinks",
@@ -95,7 +95,7 @@
         {
             "id" : 11,
             "name" : "Spaghetti Bolognese",
-            "price" : 39,
+            "price" : 149,
             "btn" : "Add To Cart",
             "image" : "/food11.jpg",
             "type" : "Western",
@@ -104,7 +104,7 @@
         {
             "id" : 12,
             "name" : "Sweet & Sour Chicken",
-            "price" : 39,
+            "price" : 49,
             "btn" : "Add To Cart",
             "image" : "/food12.jpg",
             "type" : "chinese",
@@ -122,7 +122,7 @@
         {
             "id" : 14,
             "name" : "Mini Mocha Cheese Muffin",
-            "price" : 39,
+            "price" : 99,
             "btn" : "Add To Cart",
             "image" : "/food14.jpg",
             "type" : "deserts",
@@ -131,7 +131,7 @@
         {
             "id" : 15,
             "name" : "Spaghetti Bolognese",
-            "price" : 39,
+            "price" : 169,
             "btn" : "Add To Cart",
             "image" : "/food15.jpg",
             "type" : "Western",
@@ -140,7 +140,7 @@
         {
             "id" : 16,
             "name" : "Sweet & Sour Chicken",
-            "price" : 39,
+            "price" : 159,
             "btn" : "Add To Cart",
             "image" : "/food16.jpg",
             "type" : "chinese",

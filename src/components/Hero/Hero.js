@@ -1,86 +1,92 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import {  myProducts ,addToCart} from "../../Redux/actions/main";
+import { myProducts, addToCart } from "../../Redux/actions/main";
 import { Link } from "react-router-dom";
 import "./Hero.css";
+import { Products } from "./ProductList";
+
+
+ 
+
+
 
 const Hero = () => {
+  var myCarts = useSelector((state) => state.main.CartItems);
+  console.log(myCarts, "myCarts");
 
-  const myCarts = useSelector((state) => state.main.CartItems)
-  console.log(myCarts, "kkkkppppppppppppppppp1");
+//Get all products from store
+  var AllProducts = useSelector((state) => state.main.Products)
+  console.log(AllProducts, "myProducts");
+
+
   const [currentType, setCurrentType] = useState("");
   const [data, setData] = useState([]);
 
-  const mystate = useSelector((state) => state.main);
-  console.log(mystate.count, "ttttttttttt");
   const dispatch = useDispatch();
-  // const [loading, setLoading] = useState(false);
-const cartProduct = useSelector((state) => state.main.CartItems)
-
-console.log(cartProduct, "cartProductcartProduct");
-
-
-const  quantityItems = useSelector((state) => state.main.quantityItems)
-
-console.log(quantityItems, "quantityItemsquantityItems");
-
-
-
-
-
-  const addToCartProduct = (product) => {
+ const addToCartProduct = (product) => {
     dispatch(addToCart(product));
-    console.log("dsssssssssssss");
+
   };
 
   const allProduct = async () => {
     try {
-      const result = await axios.get("http://localhost:3000/Products");
+      // const result = await axios.get("http://localhost:3000/Products");
 
-      const allPro = result.data;
-      setData(allPro);
-      dispatch(myProducts(allPro));
-      console.log(allPro, "<<<<<");
+      // const allPro = result.data;
+      setData(AllProducts);
+      dispatch(myProducts(AllProducts));
     } catch (error) {
-      console.log(error, "sdfsdf");
+      console.log(error);
     }
+ 
+
   };
 
-  const filteredProducts =
+  const Products =
     currentType === "" ? data : data.filter((p) => p.type === currentType);
 
-  console.log(filteredProducts, "gggggggggggg");
+const mytotalCart = (products) => {
+ const itemTotal = myCarts
+  .filter((item) => item.id === products.id) 
+  .reduce((total, item) => total + item.quantity, 0); 
 
-  const Products = filteredProducts.map((products) => (
-   
+  return itemTotal
+  };
+
+  const Products1 = Products.map((products) => (
     <div className="col-md-3 allcon" key={products.id}>
-      <div className="youcontent">
-      <Link to={`/Home/${products.id}`}>
-        <img src={products.image} alt="img" height="200" width="200" />
-        <div className="productName"> {products.name}</div>
-        <div className="productPrice">
-          
-          <string name="Rs">{"\u20B9"}</string>
-          {products.price}
-        </div>
+        <div className="productContent">
+        <Link to={`/Home/${products.id}`} style={{color : "unset", textDecoration : "none", fontFamily : "sans-serif"}} id="linkProp">
+          <img className="imgproduct" src={products.image} alt="img"  />
+          <div className="productName"> {products.name}
+          <div className="productPrice">
+            <string name="Rs">{"\u20B9"}</string>
+            {products.price}
+          </div>
+          </div>
         </Link>
         <div>
-          <button
-            onClick={() =>{addToCartProduct(products)}}
+         <div className="btnsection">
+        <button
+            onClick={() => {
+              addToCartProduct(products);
+            }}
             className="cartBtn"
           >
-            Add to cart
+            Add to cart 
           </button>
+          <span> {mytotalCart(products) > 0  && (
+          <span className="cartCount">{mytotalCart(products)}</span>
 
-          {/* <h3>
-           {products.name}
-          </h3> */}
+          )}</span>
+      
+      
+         </div>
+
         </div>
-        
-      </div>
+        </div>
     </div>
-   
   ));
 
   useEffect(() => {
@@ -149,12 +155,12 @@ console.log(quantityItems, "quantityItemsquantityItems");
       </div>
 
       <hr />
-      {console.log(Products, "oooooop")}
+      {console.log(Products1, "oooooop")}
 
       <div className="row">
         <div className="col-md-2"></div>
         <div className="col-md-8">
-          <div className="row mainconst">{Products}</div>
+          <div className="row mainconst">{Products1}</div>
         </div>
 
         <div className="col-md-2"></div>

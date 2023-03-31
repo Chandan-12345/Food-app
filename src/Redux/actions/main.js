@@ -45,3 +45,11 @@ export const emptyCart = (id) => (dispatch) =>{
 }
 
 
+export const removeItemFromCart = (id) => (dispatch) =>{
+    console.log(id, "itemIditemId");
+    dispatch({type : t.REMOVE_ITEM_FROM_CART, payload :id })
+}
+
+export const addProducts = (allitems) => (dispatch) => {
+    dispatch({type : t.ADD_PRODUCTS, payload : allitems})
+}

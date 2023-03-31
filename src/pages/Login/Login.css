@@ -1,0 +1,14 @@
+.loginbtn {
+    
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px 0;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        background-color: rgb(255 71 66);
+    }
+    span.signuppopup {
+        color: rgb(255 71 66);
+        cursor: pointer;
+    }

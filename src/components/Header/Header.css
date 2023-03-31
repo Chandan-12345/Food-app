@@ -20,16 +20,6 @@
         font-style: oblique;
     }
 
-    .loginText {
-        /* font-size: 20px; */
-        font-weight: 500;
-        border: 1px solid;
-        border-radius: 30px;
-        display: flex;
-        align-items: center;
-        padding: 0 12px;
-        cursor: pointer;
-    }
 
     .signupText {
         font-weight: 500;
@@ -37,14 +27,37 @@
         border-radius: 30px;
         display: flex;
         align-items: center;
-        padding: 0 12px;
+        padding: 6 12px;
+        height: 29px;
         background-color: black;
         color: aliceblue;
         cursor: pointer;
+        width: 82px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
     }
 
+
+    .loginText{
+        font-weight: 500;
+        border: 1px solid;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        height: 29px;
+        background-color: transparent;
+        color: black;
+        cursor: pointer;
+        width: max-content;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;   
+    padding: 10px;
+    }
     .addtocart {
         font-size: 30px;
+        cursor: pointer;
     }
 
     .cartValues {
@@ -57,14 +70,30 @@
         margin-right: -26px;
         height: 24px;
         width: 22px;
-        background-color: darkgreen;
-        color: white;
         border-radius: 16px;
-        padding: 0 7px;
+        padding: 0 12px;
         display: flex;
         justify-content: center;
         font-size: 12px;
+        background-color: floralwhite;
+    }
+    .signText {
+        font-size: 36px;
+        font-family: math;
     }
 
 
+    @media only screen and (max-width: 768px) {
+      .signupText{
+        display: none;
+      }  
+      .rightContent {
+        display: flex;
+        gap: 10px;
+    }
+    .loginText {
+        margin-left: 35px;
+    }
 
+   
+    }

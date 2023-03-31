@@ -1,0 +1,71 @@
+.myfirld {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.col-md-6.cardGroup {
+  box-shadow: rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.card {
+  border-radius: 20px;
+padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background-color: #d5fefd;
+  background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+}
+
+.payButton {
+  width: 100%;
+  /* height: 53px; */
+  font-size: 19px;
+  /* letter-spacing: 1.2px; */
+  font-weight: 500;
+  border: none;
+  background-color: rgb(255 217 41);
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+
+.col-md-5.cartItemsList {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.row.paycard {
+    margin-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.headpay {
+    background-color: rgb(255 217 41);
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: px;
+    align-items: center;
+    padding: 36px 386px 36px 0px;
+    padding-right: 47px;
+}
+
+.cartCheckout{
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+}
+
+.cartname {
+    justify-self: start;
+}
+
+.endItem{
+    justify-self: end;
+}
+
+@media only screen and (max-width : 768px) {
+  .card {
+    margin: 0 10px 12px;
+}
+.pay-page {
+  margin: 12px;
+}
+}

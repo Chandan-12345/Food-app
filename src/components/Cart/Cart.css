@@ -1,64 +1,105 @@
-
-
-
-  .box {
-    z-index: 100;
-    background: #fff;
-    position: absolute;
-    margin: auto;
-    border-radius: 5px;
-    max-width: 500px;
-    width: 80%;
-    padding: 1rem;
-    right: 13px;
-    top: 74px;
-    border: 1px solid grey;
+.box {
+  z-index: 100;
+  background: #fff;
+  position: absolute;
+  margin: auto;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 80%;
+  padding: 1rem;
+  right: 13px;
+  top: 74px;
+  border: 1px solid gainsboro;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .cartContents {
-    display: flex;
-    justify-content: space-between;
-    /* gap: 7px; */
-    padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  /* gap: 7px; */
+  padding-top: 10px;
 }
-
 
 .cartname {
-    font-size: 21px;
-    font-family: none;
+  font-size: 21px;
+  font-family: none;
 }
 
-.cartPrice{
-    font-size: 21px;
+.cartPrice {
+  font-size: 21px;
 }
 
 span.decProduct {
-    background-color: lightgrey;
-    padding: 0 16px;
-    width: 10px;
-    border-radius: 4px;
-    width: 10px;
-    display: flex;
-    justify-content: center;
+  background-color: lightgrey;
+  padding: 0 16px;
+  width: 10px;
+  border-radius: 4px;
+  width: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .productQuantity {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .allval {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-family: sans-serif;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-family: sans-serif;
 }
 
-.CartTotal{
-    display: flex;
-    justify-content: space-between;
-    font-size: 25px;
-    font-family: sans-serif;
+.CartTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  font-family: sans-serif;
+}
 
+.chekbtn {
+  width: 100%;
+  height: 53px;
+  font-size: 25px;
+  /* letter-spacing: 1.2px; */
+  font-weight: 500;
+  border: none;
+  background-color: rgb(255 217 41);
+  border-radius: 5px;
+}
+
+.cartImage {
+  height: 100px;
+  width: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+  .cartImage {
+    height: 50px;
+    width: 50px;
+  }
+  .cartPrice {
+    font-size: 15px;
+  }
+
+  .cartname {
+    font-size: 14px;
+    font-family: none;
+  }
+
+  .allval {
+    font-size: 16px;
+  }
+
+  .CartTotal {
+    font-size: 20px;
+  }
+
+  .chekbtn {
+    height: 30px;
+    font-size: 20px;
+  }
 }
