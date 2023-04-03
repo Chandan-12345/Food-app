@@ -50,6 +50,9 @@ export const removeItemFromCart = (id) => (dispatch) =>{
     dispatch({type : t.REMOVE_ITEM_FROM_CART, payload :id })
 }
 
-export const addProducts = (allitems) => (dispatch) => {
-    dispatch({type : t.ADD_PRODUCTS, payload : allitems})
+
+
+export const setSelectedProduct = (selectedproduct) => (dispatch) =>{
+    console.log(selectedproduct, "selectedproductselectedproduct");
+    dispatch({type : t.SET_SELECTED_PRODUCT , payload : selectedproduct})
 }

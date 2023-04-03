@@ -153,7 +153,8 @@ const main = (state = {
     CartItems : [],
     addedItems:[],
     incrementQuantity : [],
-    quantity: 0
+    quantity: 0,
+    productDetails : ""
   
 }, action) =>{
   
@@ -198,7 +199,13 @@ case t.ADD_QUANTITY:
   )
 };
 
-
+// case t.SET_SELECTED_PRODUCT : 
+// console.log(action.payload, "action.payloadaction.payload-----");
+// {
+//   return {
+//     productDetails : action.payload,
+//   }
+// }
 //  state.incrementQuantity.push(action.payload)
 //  let inCarts = state.incrementQuantity
 //       return { ...state, 

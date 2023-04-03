@@ -8,6 +8,7 @@
 
 .detailImg{
     border-radius: 10px;
+    height: 500px;
 }
 
 button.backbtn {
@@ -18,4 +19,13 @@ button.backbtn {
 .productsPage {
     font-size: 30px;
     font-weight: 600;
+}
+
+.row.productDetail {
+    margin-top: 2rem;
+}
+
+button.backbtn {
+    margin-top: 20px;
+  
 }

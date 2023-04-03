@@ -22,18 +22,11 @@ const goCheckout = () => {
     0
   );
 
-  const myIncresecarts = useSelector((state) => state.main.cartItems);
-  console.log(myIncresecarts, "myIncresecartsmyIncresecarts");
-
-
   const allitems = useSelector((state) => state.main.CartItems);
   console.log(allitems, "allitemsallitems");
 
   const numberofItems = allitems.reduce((acc, item) => acc + item.quantity, 0)
   console.log(numberofItems, "numberofItems");
-
-
-
     return (
       <>
 

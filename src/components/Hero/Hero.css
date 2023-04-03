@@ -17,7 +17,7 @@ button.cartBtn {
     background-color: #ffd929;
     /* width: 90%;
      */
-     padding: 0 40px;
+     padding: 0 35px;
     border: none;
     border-radius: 10px;
 }
@@ -105,6 +105,8 @@ button.catbtn:hover:active{
         border-top-right-radius: 11px;
         border-top-left-radius: 10px;
     }
+
+ 
 
     @media only screen and (max-width: 768px) {
         .allCategory {

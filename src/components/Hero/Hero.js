@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { myProducts, addToCart } from "../../Redux/actions/main";
+import { myProducts, addToCart, setSelectedProduct } from "../../Redux/actions/main";
 import { Link } from "react-router-dom";
 import "./Hero.css";
 import { Products } from "./ProductList";
-
-
- 
-
+// import homeImg from "./homeImg.png"
 
 
 const Hero = () => {
@@ -25,9 +22,16 @@ const Hero = () => {
 
   const dispatch = useDispatch();
  const addToCartProduct = (product) => {
+  console.log(product, "addtoproduct");
     dispatch(addToCart(product));
 
   };
+
+  const handleProduct = (id) => {
+    console.log(id, "handleProductid");
+    dispatch(setSelectedProduct(id))
+
+  }
 
   const allProduct = async () => {
     try {
@@ -47,15 +51,12 @@ const Hero = () => {
     currentType === "" ? data : data.filter((p) => p.type === currentType);
 
 const mytotalCart = (products) => {
- const itemTotal = myCarts
-  .filter((item) => item.id === products.id) 
-  .reduce((total, item) => total + item.quantity, 0); 
-
-  return itemTotal
+ const itemTotal = myCarts.filter((item) => item.id === products.id).reduce((total, item) => total + item.quantity, 0); 
+ return itemTotal
   };
 
   const Products1 = Products.map((products) => (
-    <div className="col-md-3 allcon" key={products.id}>
+    <div className="col-md-3 allcon" key={products.id} onClick={() => handleProduct(products.id)}>
         <div className="productContent">
         <Link to={`/Home/${products.id}`} style={{color : "unset", textDecoration : "none", fontFamily : "sans-serif"}} id="linkProp">
           <img className="imgproduct" src={products.image} alt="img"  />
@@ -80,11 +81,8 @@ const mytotalCart = (products) => {
           <span className="cartCount">{mytotalCart(products)}</span>
 
           )}</span>
-      
-      
-         </div>
-
-        </div>
+            </div>
+          </div>
         </div>
     </div>
   ));
@@ -95,9 +93,11 @@ const mytotalCart = (products) => {
 
   return (
     <>
-      <div>
+      
         <img className="coverImg" src="/homeImg.png" alt="img" />
-      </div>
+      
+
+    
 
       <div className="allCategory">
         <div className="allProduct">
