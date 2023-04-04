@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { MdKeyboardBackspace } from "react-icons/md";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { addToCart } from "../../Redux/actions/main";
 import "./ProductDetail.css";
 
@@ -39,7 +39,7 @@ const ProductDetail = () => {
         <div className="col-md-8">
           <button className="backbtn" onClick={goBack}>
             {" "}
-            <MdKeyboardBackspace size={30} />
+            <MdOutlineArrowBackIosNew size={18} />
             BACK TO MENU
           </button>
 

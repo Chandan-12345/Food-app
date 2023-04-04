@@ -25,7 +25,12 @@ button.backbtn {
     margin-top: 2rem;
 }
 
+
+
 button.backbtn {
     margin-top: 20px;
-  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
 }

@@ -18,10 +18,11 @@ const firebaseConfig = {
   appId: "1:244813576276:web:1d390c772fd6999fc795c1",
   measurementId: "G-KFC4M8B4B8"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+
+
 // export const db=firebase.firestore();
 export default app;

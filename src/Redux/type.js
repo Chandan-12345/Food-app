@@ -8,3 +8,6 @@ export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const SUB_QUANTITY = 'SUB_QUANTITY';
 export const EMPTY_CART = 'EMPTY_CART';
 export const SET_SELECTED_PRODUCT="SET_SELECTED_PRODUCT"
+export const LOGIN="LOGIN"
+export const LOGOUT="LOGOUT"
+export const LOGINDATA = "LOGINDATA"

@@ -6,9 +6,12 @@ import React, {useState} from 'react';
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
+import { loginUser, loginData } from "../../Redux/actions/main";
+import { useDispatch } from "react-redux";
  
 const Login = (props) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,8 +22,15 @@ const Login = (props) => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
+              //  updateProfile(user, {
+                    //   displayName: name,
+                    // });
             navigate("/")
-            console.log(user);
+            console.log(user, "localuser");
+            // localStorage.setItem('user', JSON.stringify(user));
+            dispatch(loginData(user))
+            dispatch(loginUser('LOGIN'))
+
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -36,7 +46,7 @@ const Login = (props) => {
                 <section>
                     <div>                                            
                                                        
-                        <form App__form>                                              
+                        <form>                                              
                             <div>
                                 <label htmlFor="email-address">
                                     Email address

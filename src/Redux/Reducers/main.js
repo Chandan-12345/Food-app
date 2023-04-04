@@ -154,7 +154,9 @@ const main = (state = {
     addedItems:[],
     incrementQuantity : [],
     quantity: 0,
-    productDetails : ""
+    productDetails : "",
+    isLoggedIn : false,
+    loginData : "",
   
 }, action) =>{
   
@@ -242,6 +244,32 @@ case t.ADD_QUANTITY:
         ...state,
         CartItems: state.CartItems.filter((item) => item.id !== action.payload)
       };
+
+case t.LOGINDATA :
+console.log(action.payload, "loginDataloginData");
+let allLoginData = action.payload;
+localStorage.setItem('user', JSON.stringify((allLoginData)))
+
+return {
+  ...state,
+  loginData : allLoginData
+}
+
+
+case t.LOGIN : 
+console.log(action.payload, "loginnnnnnnnnnnn");
+return {
+...state,
+isLoggedIn : true
+}
+
+case t.LOGOUT : 
+console.log(action.payload, "logout");
+return {
+...state,
+isLoggedIn : false
+}
+
 
 default : 
 return  state

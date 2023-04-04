@@ -56,3 +56,19 @@ export const setSelectedProduct = (selectedproduct) => (dispatch) =>{
     console.log(selectedproduct, "selectedproductselectedproduct");
     dispatch({type : t.SET_SELECTED_PRODUCT , payload : selectedproduct})
 }
+
+export const loginData = (loginData) => (dispatch) => {
+    console.log(loginData, "LOGINIsuser");
+    dispatch({type : t.LOGINDATA, payload: loginData})
+}
+
+
+export const loginUser = (Isuser) => (dispatch) => {
+    console.log(Isuser, "LOGINIsuser");
+    dispatch({type : t.LOGIN, payload : Isuser})
+}
+
+export const logoutUser = (Isuser) => (dispatch) => {
+    console.log(Isuser, "Isuser");
+    dispatch({type : t.LOGOUT, payload : Isuser})
+}

@@ -24,6 +24,8 @@ const Header = (props) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
+
+
   // const allitems = useSelector((state) => state.main.CartItems);
   // console.log(allitems, "allitemsallitems");
 
@@ -37,6 +39,7 @@ const Header = (props) => {
         navigate("/");
         setIsLoggedIn(false);
         console.log("Signed out successfully");
+        localStorage.removeItem('user')
       })
       .catch((error) => {
         // An error happened.
@@ -86,21 +89,7 @@ const Header = (props) => {
     };
   }, []);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        // ...
-        console.log("uid", uid);
-      } else {
-        // User is signed out
-        // ...
-        console.log("user is logged out");
-      }
-    });
-  }, []);
+
 
   const navbarStyle = {
     position: isNavbarFixed ? "fixed" : "static",
@@ -125,10 +114,14 @@ const Header = (props) => {
               <div className="headerlogo">𝘡𝘞𝘐𝘎𝘈𝘛𝘖</div>
 
               <div className="rightContent">
-                <div className="loginText" onClick={showloginPopup}>
-                  {props.name ? ` ${props.name} ` : "Login"}
+              
+
+                <div className="loginText">
+                {props.name ? `${props.name}` :  <div  onClick={showloginPopup}>
+               Login
+                </div>} 
                 </div>
-                {showlogin && (
+            { showlogin && (
                   <>
                     <Modal show={showlogin} onHide={handlelogClose}>
                       <Modal.Header closeButton>
@@ -142,7 +135,7 @@ const Header = (props) => {
                 )}
 
                 <div>
-                  {props.name ? (
+                  {props.name ?(
                     <div className="signupText"  onClick={handleLogout}>Logout</div>
                   ) : (
                     <div className="signupText" onClick={handleShow}>

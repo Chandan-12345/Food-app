@@ -20,7 +20,7 @@ function App() {
     auth.onAuthStateChanged((user) => {
       if (user) {
         console.log(user, "useruseruser");
-        setUserName(user.email);
+        setUserName(user.displayName);
       } else setUserName("");
     });
   }, []);

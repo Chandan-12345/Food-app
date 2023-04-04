@@ -19,6 +19,7 @@ const placeOrder = (data) => {
   console.log(orders, "oredr");
   // const allordermsg = axios.post(`${process.env.REACT_APP_API_URL}/orders`,data)
   const allordermsg = axios.post(`http://localhost:5000/orders`, data);
+ 
 };
 
 
@@ -57,13 +58,13 @@ const navigate = useNavigate();
             items: props.items,
             shippingFee: props.shippingFee,
           },
-
-          () => {
-            setSuccess(true);
-            console.log(setSuccess(true), "setSuccess(true);setSuccess(true);setSuccess(true);");
-          }
+          setSuccess(true)
+          // () => {
+          //   setSuccess(true);
+          // }
+         
         );
-
+       
        
       } catch (error) {
         console.log("Error", error);

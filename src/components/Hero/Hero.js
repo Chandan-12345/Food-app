@@ -16,9 +16,17 @@ const Hero = () => {
   var AllProducts = useSelector((state) => state.main.Products)
   console.log(AllProducts, "myProducts");
 
+const isLoggedIn = useSelector((state) => state.main.isLoggedIn)
+console.log(isLoggedIn, "logindetaillogindetail"); 
+
+const loginData = useSelector((state) => state.main.loginData)
+console.log(loginData.displayName, "loginDataHero"); 
 
   const [currentType, setCurrentType] = useState("");
   const [data, setData] = useState([]);
+
+  const [userData, setUserData] = useState(null);
+  console.log(userData, "userDatauserData");
 
   const dispatch = useDispatch();
  const addToCartProduct = (product) => {
@@ -69,14 +77,25 @@ const mytotalCart = (products) => {
         </Link>
         <div>
          <div className="btnsection">
-        <button
+
+         {loginData ? <button
             onClick={() => {
               addToCartProduct(products);
             }}
             className="cartBtn"
           >
             Add to cart 
-          </button>
+          </button> : <button onClick={() => {alert("first log in")}}
+          
+            className="cartBtn"
+          >
+            Add to cart 
+          </button>}
+     
+
+        
+
+
           <span> {mytotalCart(products) > 0  && (
           <span className="cartCount">{mytotalCart(products)}</span>
 
@@ -90,6 +109,14 @@ const mytotalCart = (products) => {
   useEffect(() => {
     allProduct();
   }, []);
+
+  useEffect(() =>{
+    const savedData = localStorage.getItem('user');
+    if(savedData){
+     setUserData(JSON.parse(savedData))
+     console.log(savedData);
+    }
+   }, [])
 
   return (
     <>
