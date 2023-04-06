@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { addToCart } from "../../Redux/actions/main";
+import { addToCart, loginPop } from "../../Redux/actions/main";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 import "./ProductDetail.css";
+import LoginPopup from "../Hero/LoginPopup";
+
+
 
 const ProductDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [userData, setUserData] = useState(null);
 
   const allProductDetail = useSelector((state) => state.main.Proudcts);
   var myCarts = useSelector((state) => state.main.CartItems);
+
+const loginModal = useSelector((state) => state.main.loginpopup)
+console.log(loginModal, "loginPopupinproductloginPopupinproduct1");
 
   const { productId } = useParams();
   console.log(productId, "id");
@@ -32,6 +41,19 @@ const ProductDetail = () => {
   const goBack = () => {
     navigate(-1);
   };
+
+  useEffect(() =>{
+    onAuthStateChanged(auth, (user) =>{
+      
+      if(user){
+        setUserData(user)
+      }else{
+        setUserData(null)
+      }
+    })
+  })
+
+
   return (
     <>
       <div className="row">
@@ -62,22 +84,20 @@ const ProductDetail = () => {
                 {"\u20B9"}
               </p>
 
-              <button
+              {userData ? (<button
                 className="cartDetailbtn"
                 onClick={() => {
                   dispatch(addToCart(thisProduct));
                 }}
               >
                 Add to cart
-              </button>
-              {/* <button
-                onClick={() => {
-                  addToCartProduct(allProductDetail);
-                }}
-                className="cartBtn"
+              </button>) : <button
+                className="cartDetailbtn"
+               onClick={() => {dispatch(loginPop(true))}}
               >
                 Add to cart
-              </button> */}
+              </button>}
+          {loginModal && <LoginPopup  onClose={() => dispatch(loginPop(false))}/>}
               <span>
                 {" "}
                 {mytotalCart(thisProduct) > 0 && (

@@ -157,7 +157,8 @@ const main = (state = {
     productDetails : "",
     isLoggedIn : false,
     loginData : "",
-  
+    loginpopup : false,
+    loginjsModal : false
 }, action) =>{
   
 switch(action.type){
@@ -246,9 +247,10 @@ case t.ADD_QUANTITY:
       };
 
 case t.LOGINDATA :
-console.log(action.payload, "loginDataloginData");
+console.log(action.payload, "loginDataloginData@@@");
 let allLoginData = action.payload;
-localStorage.setItem('user', JSON.stringify((allLoginData)))
+console.log(allLoginData, "iooioioioio");
+// localStorage.setItem('user', JSON.stringify((allLoginData)))
 
 return {
   ...state,
@@ -267,8 +269,46 @@ case t.LOGOUT :
 console.log(action.payload, "logout");
 return {
 ...state,
-isLoggedIn : false
+CartItems : []
 }
+
+case t.LOGINPOPUP :
+ console.log( action.payload,"<<>><><><><><>IIIIIIIIIIIIIIIIIIIIII");
+  return {
+    ...state,
+    loginpopup : action.payload,
+  }
+
+  case t.LOGINJS : 
+  console.log(action.payload, "loginjs reducer");
+
+  return {
+    ...state,
+    loginjsModal : action.payload
+  }
+ 
+  case t.LOGINPOPUPFALSE:
+  if(state.loginjsModal){
+    return {
+      ...state,
+      loginpopup : false
+    }
+  }
+
+// if(state.loginjsModal){
+//   return {
+//     ...state,
+//     loginpopup :false,
+//      }
+
+// }  else{
+//   return {
+//     ...state,
+  
+//   }
+// }
+
+
 
 
 default : 

@@ -57,18 +57,35 @@ export const setSelectedProduct = (selectedproduct) => (dispatch) =>{
     dispatch({type : t.SET_SELECTED_PRODUCT , payload : selectedproduct})
 }
 
-export const loginData = (loginData) => (dispatch) => {
+export const newLogin = (loginData) => (dispatch) => {
     console.log(loginData, "LOGINIsuser");
     dispatch({type : t.LOGINDATA, payload: loginData})
 }
 
 
 export const loginUser = (Isuser) => (dispatch) => {
-    console.log(Isuser, "LOGINIsuser");
+    // console.log(Isuser, "LOGINIsuser");
     dispatch({type : t.LOGIN, payload : Isuser})
 }
 
 export const logoutUser = (Isuser) => (dispatch) => {
-    console.log(Isuser, "Isuser");
+    console.log(Isuser, "LOGOUTLOGOUTLOGOUTLOGOUTIsuser");
     dispatch({type : t.LOGOUT, payload : Isuser})
+}
+
+export const loginPop = (loginpopwe) => (dispatch) =>{
+    console.log(loginpopwe, "loginpoploginpop");
+    dispatch({type : t.LOGINPOPUP, payload : loginpopwe})
+}
+
+
+export const loginJs = (loginLog) => (dispatch) =>{
+    console.log(loginLog, "loginLogloginLog  action");
+    dispatch({type : t.LOGINJS, payload : loginLog})
+}
+
+
+export const loginJsfalse = (loginLog12) => (dispatch) =>{
+    console.log(loginLog12, "loginLogloginLog  actionloginLog12");
+    dispatch({type : t.LOGINPOPUPFALSE, payload : loginLog12})
 }

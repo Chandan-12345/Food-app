@@ -12,6 +12,8 @@ import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import EmptyCart from "../Cart/EmptyCart";
+import { logoutUser } from "../../Redux/actions/main";
+import { useDispatch } from "react-redux";
 
 const Header = (props) => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -23,7 +25,7 @@ const Header = (props) => {
   const [showcartPopup, setShowCartPopup] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-
+const dispatch = useDispatch();
 
 
   // const allitems = useSelector((state) => state.main.CartItems);
@@ -38,8 +40,8 @@ const Header = (props) => {
         // Sign-out successful.
         navigate("/");
         setIsLoggedIn(false);
+        dispatch(logoutUser(false))
         console.log("Signed out successfully");
-        localStorage.removeItem('user')
       })
       .catch((error) => {
         // An error happened.

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { myProducts, addToCart, setSelectedProduct } from "../../Redux/actions/main";
+import { myProducts, addToCart, setSelectedProduct, loginPop } from "../../Redux/actions/main";
 import { Link } from "react-router-dom";
 import "./Hero.css";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 import { Products } from "./ProductList";
+import firebase from "../../firebase";
+import LoginPopup from "./LoginPopup";
 // import homeImg from "./homeImg.png"
 
 
-const Hero = () => {
+const Hero = (props) => {
   var myCarts = useSelector((state) => state.main.CartItems);
   console.log(myCarts, "myCarts");
 
@@ -20,7 +24,7 @@ const isLoggedIn = useSelector((state) => state.main.isLoggedIn)
 console.log(isLoggedIn, "logindetaillogindetail"); 
 
 const loginData = useSelector((state) => state.main.loginData)
-console.log(loginData.displayName, "loginDataHero"); 
+console.log(loginData, "loginDataHeronew"); 
 
   const [currentType, setCurrentType] = useState("");
   const [data, setData] = useState([]);
@@ -28,10 +32,23 @@ console.log(loginData.displayName, "loginDataHero");
   const [userData, setUserData] = useState(null);
   console.log(userData, "userDatauserData");
 
+  const [user, setUser] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const loginpopup = useSelector((state) => state.main.loginpopup)
+
   const dispatch = useDispatch();
+
+
  const addToCartProduct = (product) => {
   console.log(product, "addtoproduct");
-    dispatch(addToCart(product));
+ if(!user){
+  dispatch(loginPop(true))
+  // setShowPopup(true)
+ return
+ }else{
+  dispatch(addToCart(product));
+ }
 
   };
 
@@ -54,6 +71,7 @@ console.log(loginData.displayName, "loginDataHero");
  
 
   };
+  
 
   const Products =
     currentType === "" ? data : data.filter((p) => p.type === currentType);
@@ -78,24 +96,32 @@ const mytotalCart = (products) => {
         <div>
          <div className="btnsection">
 
-         {loginData ? <button
+         {/* {user ? <button
             onClick={() => {
               addToCartProduct(products);
             }}
             className="cartBtn"
           >
             Add to cart 
-          </button> : <button onClick={() => {alert("first log in")}}
-          
+          </button> : <button onClick={() => { <div className="box">
+          <div className="modal-content">
+            <span className="close-btn" >
+              &times;
+            </span>
+            <p>This is a pop-up</p>
+          </div>
+        </div>}} */}
+
+         <button
+            onClick={() => {
+              addToCartProduct(products);
+            }}
             className="cartBtn"
           >
             Add to cart 
-          </button>}
-     
-
-        
-
-
+          </button> 
+          {loginpopup && <LoginPopup onClose={() => dispatch(loginPop(false))} onShow={props.showPopup} />}
+         
           <span> {mytotalCart(products) > 0  && (
           <span className="cartCount">{mytotalCart(products)}</span>
 
@@ -110,23 +136,34 @@ const mytotalCart = (products) => {
     allProduct();
   }, []);
 
-  useEffect(() =>{
-    const savedData = localStorage.getItem('user');
-    if(savedData){
-     setUserData(JSON.parse(savedData))
-     console.log(savedData);
-    }
-   }, [])
+ 
+
+
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+          setUser(user)
+          dispatch(loginData(user))
+          // ...
+          console.log("uid", uid)
+        } else {
+          // User is signed out
+          // ...
+          setUser(null)
+          console.log("user is logged out")
+        }
+      });
+     
+}, [])
+
 
   return (
     <>
-      
-        <img className="coverImg" src="/homeImg.png" alt="img" />
-      
-
-    
-
-      <div className="allCategory">
+           <img className="coverImg" src="/homeImg.png" alt="img" />
+           <div className="allCategory">
         <div className="allProduct">
           <button
             onClick={() => setCurrentType("")}

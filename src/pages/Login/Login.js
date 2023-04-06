@@ -6,7 +6,7 @@ import React, {useState} from 'react';
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { NavLink, useNavigate } from 'react-router-dom'
-import { loginUser, loginData } from "../../Redux/actions/main";
+import { loginUser } from "../../Redux/actions/main";
 import { useDispatch } from "react-redux";
  
 const Login = (props) => {
@@ -28,7 +28,6 @@ const Login = (props) => {
             navigate("/")
             console.log(user, "localuser");
             // localStorage.setItem('user', JSON.stringify(user));
-            dispatch(loginData(user))
             dispatch(loginUser('LOGIN'))
 
         })
@@ -86,12 +85,7 @@ const Login = (props) => {
                             <span className="signuppopup" onClick={props.showbtn} > Create Account</span></div>  
                                 </form>
                        
-                        {/* <p className="text-sm text-white text-center">
-                            No account yet? {' '}
-                            <NavLink to="/signup">
-                                Sign up
-                            </NavLink>
-                        </p> */}
+                      
                                                    
                     </div>
                 </section>

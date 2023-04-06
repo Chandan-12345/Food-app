@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 
 const Home = (props) =>{
+    console.log(props, "home");
     return(
         <>
 <Header {...props} />
