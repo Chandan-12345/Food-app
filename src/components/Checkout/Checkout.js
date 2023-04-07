@@ -35,6 +35,10 @@ const navigate = useNavigate();
       (total, item) => total  + item.quantity,
       0
     );
+
+    const goHome = () =>{
+      navigate(-1)
+    }
     
     return(
         <>
@@ -43,7 +47,7 @@ const navigate = useNavigate();
 <div className="chkecoutHeader">
 
     <div className="backBtn" onClick={() => navigate(-1)} ><MdOutlineArrowBackIosNew size="25px" /> TO MENU</div>
-    <h3 className="alit">𝙕𝙒𝙄𝙂𝘼𝙏𝙊</h3>
+    <h3 onClick={goHome} className="alit">𝙕𝙒𝙄𝙂𝘼𝙏𝙊</h3>
 </div>
 
 

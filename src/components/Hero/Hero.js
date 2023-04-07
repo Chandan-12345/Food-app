@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { myProducts, addToCart, setSelectedProduct, loginPop } from "../../Redux/actions/main";
 import { Link } from "react-router-dom";
 import "./Hero.css";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase";
+
 import { Products } from "./ProductList";
 import firebase from "../../firebase";
-import LoginPopup from "./LoginPopup";
+// import LoginPopup from "./LoginPopup";
 // import homeImg from "./homeImg.png"
 
 
@@ -32,23 +31,23 @@ console.log(loginData, "loginDataHeronew");
   const [userData, setUserData] = useState(null);
   console.log(userData, "userDatauserData");
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  const loginpopup = useSelector((state) => state.main.loginpopup)
+  // const loginpopup = useSelector((state) => state.main.loginpopup)
 
   const dispatch = useDispatch();
 
 
  const addToCartProduct = (product) => {
   console.log(product, "addtoproduct");
- if(!user){
-  dispatch(loginPop(true))
-  // setShowPopup(true)
- return
- }else{
+//  if(!user){
+//   dispatch(loginPop(true))
+//   // setShowPopup(true)
+//  return
+//  }else{
   dispatch(addToCart(product));
- }
+//  }
 
   };
 
@@ -120,7 +119,7 @@ const mytotalCart = (products) => {
           >
             Add to cart 
           </button> 
-          {loginpopup && <LoginPopup onClose={() => dispatch(loginPop(false))} onShow={props.showPopup} />}
+          {/* {loginpopup && <LoginPopup onClose={() => dispatch(loginPop(false))} onShow={props.showPopup} />} */}
          
           <span> {mytotalCart(products) > 0  && (
           <span className="cartCount">{mytotalCart(products)}</span>
@@ -139,25 +138,25 @@ const mytotalCart = (products) => {
  
 
 
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
-          const uid = user.uid;
-          setUser(user)
-          dispatch(loginData(user))
-          // ...
-          console.log("uid", uid)
-        } else {
-          // User is signed out
-          // ...
-          setUser(null)
-          console.log("user is logged out")
-        }
-      });
+//   useEffect(()=>{
+//     onAuthStateChanged(auth, (user) => {
+//         if (user) {
+//           // User is signed in, see docs for a list of available properties
+//           // https://firebase.google.com/docs/reference/js/firebase.User
+//           const uid = user.uid;
+//           setUser(user)
+//           dispatch(loginData(user))
+//           // ...
+//           console.log("uid", uid)
+//         } else {
+//           // User is signed out
+//           // ...
+//           setUser(null)
+//           console.log("user is logged out")
+//         }
+//       });
      
-}, [])
+// }, [])
 
 
   return (

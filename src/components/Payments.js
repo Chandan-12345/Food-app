@@ -77,14 +77,16 @@ const navigate = useNavigate();
   const deliveycharg = items.length > 0 ? 40 : 0;
 
   // const  TotalQuantity =  items.reduce((total, item) => total  + item.quantity, 0);
-
+const gotoHome = () =>{
+  navigate(-2)
+}
   return (
     <>
     <div className="cardContainer">
     <div className="chkecoutHeader">
 
 <div className="backBtn" onClick={() => navigate(-1)} ><MdOutlineArrowBackIosNew size="25px" /> TO MENU</div>
-<h3 className="alit">𝙕𝙒𝙄𝙂𝘼𝙏𝙊</h3>
+<h3 onClick={gotoHome} className="alit">𝙕𝙒𝙄𝙂𝘼𝙏𝙊</h3>
 </div>
 
       {!success ? (

@@ -166,7 +166,7 @@ const dispatch = useDispatch();
                     onMouseEnter={handleCartButtonClick}
                   >
                     <BsCartPlusFill />
-                    { showcartPopup && <CartProducts items={myCart} />}
+                    { showcartPopup && <CartProducts items={myCart} setShowlogin = {setShowlogin} setShowCartPopup={setShowCartPopup} />}
                   </div>
                 </div>
               </div>

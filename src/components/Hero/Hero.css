@@ -44,13 +44,14 @@ button.cartBtn {
 
 
 .productName, .productPrice {
-    font-size: 18px;
-    font-style: oblique;
+    font-size: 14px;
+    /* font-style: oblique; */
     margin: 6px;
-    height: 100px;
+    /* height: 100px; */
     font-style: sans-serif;
-    font-weight: 700;
-    padding: 10px 0;
+    font-weight: bolder;
+    padding: 5px 0;
+    letter-spacing: 0.4px;
 }
 
 

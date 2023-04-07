@@ -71,6 +71,7 @@ button.removeItem {
 
 h3.alit {
     font-size: 40px;
+    cursor: pointer;
 }
 
 .cartnumbers {

@@ -1,21 +1,39 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addQuantity, subtractQuantity } from "../../Redux/actions/main";
+import { addQuantity, loginPop, subtractQuantity } from "../../Redux/actions/main";
 import Checkout from "../Checkout/Checkout";
 import { useNavigate } from "react-router-dom";
 import EmptyCart from "./EmptyCart";
 import "./Cart.css";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
+import LoginPopup from "../Hero/LoginPopup"
+import Login from "../../pages/Login/Login";
 
-const CartProducts = ({ items }) => {
- 
+const CartProducts = ({ items, setShowlogin, setShowCartPopup }) => {
+  console.log(setShowlogin, "cart");
+  const [user, setUser] = useState(null);
+
   console.log(items, "{{{}}}");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
+const loginpopup = useSelector((state) => state.main.loginpopup)
+console.log(loginpopup, "loginpopupcart");
 
 const goCheckout = () => {
-  navigate("./Checkout")
+  if(!user){
+    console.log("error");
+    
+   setShowlogin(true)
+   setShowCartPopup(false)
+    return
+  }else{
+    navigate("./Checkout")
+  }
+   
+  
 }
   const myTotal = items.reduce(
     (total, item) => total + parseInt(item.price) * item.quantity,
@@ -27,6 +45,26 @@ const goCheckout = () => {
 
   const numberofItems = allitems.reduce((acc, item) => acc + item.quantity, 0)
   console.log(numberofItems, "numberofItems");
+
+
+    useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+          setUser(user)
+          // ...
+          console.log("uid", uid)
+        } else {
+          // User is signed out
+          // ...
+          setUser(null)
+          console.log("user is logged out")
+        }
+      });
+     
+}, [])
     return (
       <>
 
@@ -100,6 +138,7 @@ const goCheckout = () => {
   
   
             <button className="chekbtn" onClick={goCheckout}>Proceed To checkout</button>
+            
           </div>
         </div>) : (<EmptyCart />)}
 
